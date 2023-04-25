@@ -11,13 +11,13 @@
 
 ## Table of Contents 📖
 
-- ![Installation](#installation)
-- ![Usage](#usage)
-- ![Tests](#tests)
-- ![Badges](#badges)
-- ![Credits\_&_Questions](#credits_&_questions)
-- ![License](#license)
-- ![Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Tests](#tests)
+- [Badges](#badges)
+- [Credits\_&_Questions](#credits_&_questions)
+- [License](#license)
+- [Features](#features)
 
 ## Installation 🔑
 
