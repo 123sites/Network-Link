@@ -27,7 +27,7 @@
 
 [Repository link:](https://github.com/123sites/Network-Link)
 
-This can be used for any type of poll, so as to help reach a majority solution.
+
 
 ## Screenshot 🎯
 
