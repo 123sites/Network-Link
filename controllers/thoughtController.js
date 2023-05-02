@@ -1,4 +1,4 @@
-// const { Application, User } = require('../models');
+const { Thought, User } = require('..models');
 
 module.exports = {
   // Function to get all of the thoughts by invoking the find() method with no arguments.
@@ -96,7 +96,7 @@ module.exports = {
     }
   },
   // Adds a tag to a thought. This method is unique in that we add the entire body of the tag rather than the ID with the mongodb $addToSet operator.
-  async addTag(req, res) {
+  async updateThought(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
@@ -114,7 +114,7 @@ module.exports = {
     }
   },
   // Remove thought tag. This method finds the thought based on ID. It then updates the tags array associated with the app in question by removing it's tagId from the tags array.
-  async removeTag(req, res) {
+  async deleteThought(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
@@ -131,4 +131,31 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-};
+    // Create reaction
+    createReaction({ params, body }, res) {
+      Thought.findOneAndUpdate(
+        { _id: params.thoughtId },
+        { $addToSet: { reactions: body } },
+        { new: true, runValidators: true }
+      )
+        .then((dbThoughtData) => {
+          if (!dbThoughtData) {
+            res.status(404).json({ message: "No thought with this id" });
+            return;
+          }
+          res.json(dbThoughtData);
+        })
+        .catch((err) => res.json(err));
+    },
+  
+    // Delete reaction
+    deleteReaction({ params }, res) {
+      Thought.findOneAndUpdate(
+        { _id: params.thoughtId },
+        { $pull: { reactions: { reactionId: params.reactionId } } },
+        { new: true }
+      )
+        .then((dbThoughtData) => res.json(dbThoughtData))
+        .catch((err) => res.json(err));
+    },
+  };
