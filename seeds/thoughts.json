@@ -1,15 +1,44 @@
-
 [
   {
     "thoughtText": "It is a great day for a hike!",
-    "username": "joe"
+    "username": "joe",
+    "reactions": [
+      {
+        "thoughtText": "Amazing!",
+        "username": "bob"
+      },
+      {
+        "thoughtText": "Incredible!",
+        "username": "sue"
+      }
+    ]
   },
   {
     "thoughtText": "I am ready to start my day!",
-    "username": "bob"
+    "username": "bob",
+    "reactions": [
+      {
+        "thoughtText": "Wow!",
+        "username": "joe"
+      },
+      {
+        "thoughtText": "Incredible!",
+        "username": "sue"
+      }
+    ]
   },
   {
     "thoughtText": "I am ready for the weekend!",
-    "username": "sue"
+    "username": "sue",
+    "reactions": [
+      {
+        "thoughtText": "Wow!",
+        "username": "joe"
+      },
+      {
+        "thoughtText": "Amazing!",
+        "username": "bob"
+      }
+    ]
   }
 ]

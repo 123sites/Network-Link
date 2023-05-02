@@ -1,46 +1,51 @@
-const connection = require('../config/connection');
-const { Thought, Reaction } = require('../models');
+const connection = require("../config/connection");
+const { Thought, User } = require("../models");
 const {
   getRandomName,
   getRandomThought,
   getRandomReactions,
   genRandomIndex,
-} = require('./data');
+} = require("./data");
+
+const thoughts = require("./thoughts.json");
+const users = require("./users.json");
 
 // Start the seeding runtime timer
-console.time('seeding');
+console.time("seeding");
 
 // Creates a connection to mongodb
-connection.once('open', async () => {
+connection.once("open", async () => {
   // Delete the entries in the collection
   await Thought.deleteMany({});
-  await Reaction.deleteMany({});
+  await User.deleteMany({});
 
-  // Empty arrays for randomly generated thoughts and reactions
-  const reactions = [...getRandomReactions(10)];
-  const thoughts = [];
-
-  // Makes reactions array
-  const makeThought = (text) => {
-    thoughts.push({
-      text,
-      username: getRandomName().split(' ')[0],
-      reactions: [reactions[genRandomIndex(reactions)]._id],
-    });
-  };
-
-  // Wait for the reactions to be inserted into the database
-  await Reaction.collection.insertMany(reactions);
-
-  // For each of the reactions that exist, make a random thought of 10 words
-  thoughts.forEach(() => makeThought(getRandomThought(10)));
-
+  const userArray = await User.collection.insertMany(users);
   // Wait for the posts array to be inserted into the database
-  await Thought.collection.insertMany(thoughts);
+  const thoughtArray = await Thought.collection.insertMany(thoughts);
+
+    const user = await User.collection.findOneAndUpdate(
+      { _id: userArray.insertedIds["0"] },
+      { $addToSet: { thoughts: thoughtArray.insertedIds["0"] } },
+      { new: true }
+    );
+    console.log(user);
+    const userA = await User.collection.findOneAndUpdate(
+      { _id: userArray.insertedIds["1"] },
+      { $addToSet: { thoughts: thoughtArray.insertedIds["1"] } },
+      { new: true }
+    );
+    console.log(userA);
+    const userB = await User.collection.findOneAndUpdate(
+      { _id: userArray.insertedIds["2"] },
+      { $addToSet: { thoughts: thoughtArray.insertedIds["2"] } },
+      { new: true }
+    );
+    console.log(userB);
+
 
   // Log out a pretty table for reactions and thoughts
-  console.table(reactions);
-  console.table(thoughts);
-  console.timeEnd('seeding complete 🌱');
+  console.log(userArray);
+  console.log(thoughtArray);
+  console.timeEnd("seeding complete 🌱");
   process.exit(0);
 });
