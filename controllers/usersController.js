@@ -36,21 +36,37 @@ module.exports = {
   },
 
     // Update user by id
-    updateUser({ params, body }, res) {
-      User.findOneAndUpdate({ _id: params.id }, body, {
-        new: true,
-        runValidators: true,
-      })
-        .then((dbUserData) => {
-          if (!dbUserData) {
-            res.status(404).json({ message: "No user found with this id!" });
-            return;
+   async updateUser(req, res) {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $set: req.body }, 
+        {runValidators: true}
+      );
+          if (!user) {
+            res.status(404).json({ message: 'No user with this id!' });
           }
-          res.json(dbUserData);
-        })
-        .catch((err) => res.json(err));
-    },
+    
+          res.json(user);
+        } catch (err) {
+          res.status(500).json(err);
+        }
+      },
 
+    // updateUser({ params, body }, res) {
+    //   User.findOneAndUpdate({ _id: params.id }, body, {
+    //     new: true,
+    //     runValidators: true,
+    //   })
+    //     then((dbUserData) => {
+    //       if (!dbUserData) {
+    //         res.status(404).json({ message: "No user found with this id!" });
+    //         return;
+    //       }
+    //       res.json(dbUserData);
+    //     })
+    //     catch((err) => res.json(err));
+    // },
   // Delete a user and associated apps
   async deleteUser(req, res) {
     try {
@@ -60,7 +76,7 @@ module.exports = {
         return res.status(404).json({ message: 'No user with that ID' });
       }
 
-      await Application.deleteMany({ _id: { $in: user.applications } });
+      await Thought.deleteMany({ _id: { $in: user.thoughts } });
       res.json({ message: 'User and associated apps deleted!' })
     } catch (err) {
       res.status(500).json(err);
