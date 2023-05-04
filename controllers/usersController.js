@@ -26,28 +26,19 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Create a new user
-  async createUser(req, res) {
-    //localhost:3001/api/users
-    try {
-      const { error, value } = validateUser(req.body);
-      if (error) return res.status(400).send(error.details[0].message);
 
-      let user = await User.create(req.body);
-      res.send(user).status(200);
+  // Create a user
+  //localhost:3001/api/users
+  async createUser(req, res) {
+    try {
+      const user = await User.create(req.body);
+      console.log(user);
+      res.status(200).json(user);
     } catch (err) {
+      console.log(err);
       res.status(500).json(err);
     }
   },
-
-  // async createUser(req, res) {
-  //   try {
-  //     const user = await User.create(req.body);
-  //     res.json(user);
-  //   } catch (err) {
-  //     res.status(500).json(err);
-  //   }
-  // },
 
   // Update user by id
   async updateUser(req, res) {
@@ -104,22 +95,17 @@ module.exports = {
     try {
       const friend = await User.findOne({ _id: req.params.friendId });
       if (!friend)
-        return res
-          .status(404)
-          .send("The friend with this ID was not found.");
-
+        return res.status(404).send("The friend with this ID was not found.");
+      // Newer syntax that removes the curly brackets on the if statement.  Keep the Vanilla JS.)
       let user = await User.findOneAndUpdate(
-        { _id: req.params.id },
+        { _id: req.params.userId },
         { $addToSet: { friends: req.params.friendId } },
         { runValidators: true, new: true }
       );
       if (!user)
-        return res
-          .status(404)
-          .send("The friend with this ID was not found.");
+        return res.status(404).send("The friend with this ID was not found.");
 
-      user = await User.findOne({ _id: req.params.id });
-      res.send(user).status(200);
+      res.status(200).json(user);
     } catch (err) {
       res.status(500).json(err);
     }
@@ -136,17 +122,13 @@ module.exports = {
           .send("The friend with this user ID was not found.");
 
       let user = await User.findOneAndUpdate(
-        { _id: req.params.id },
+        { _id: req.params.userId },
         { $pull: { friends: req.params.friendId } },
         { runValidators: true, new: true }
       );
       if (!user)
-        return res
-          .status(404)
-          .send("The friend with this ID was not found.");
-
-      user = await User.findOne({ _id: req.params.id });
-      res.send(user).status(200);
+        return res.status(404).send("The friend with this ID was not found.");
+      res.status(200).json(user);
     } catch (err) {
       res.status(500).json(err);
     }
