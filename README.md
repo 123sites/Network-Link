@@ -34,6 +34,7 @@ can handle a lot of unstructured data.
 ## Video 🎯
 
 [Video](https://youtu.be/LY_dguTWkbM)
+YouTube video: https://youtu.be/LY_dguTWkbM 
 
 ## Screenshot 🎯
 ![alt text](./assets/Network-Link-Screenshot.png)
