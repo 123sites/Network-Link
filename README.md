@@ -1,7 +1,11 @@
 # ⭐ Network Link ⭐
 
-
 ![alt text](https://img.shields.io/badge/License-MIT-blue.svg)
+
+![NoSQL](https://img.shields.io/badge/NoSQL-MongoDB-yellowgreen)
+![badmath](https://img.shields.io/badge/CSS-41%25-purple)
+![badmath](https://img.shields.io/badge/JavaScript-35%25-purple)
+![badmath](https://img.shields.io/badge/Handlebars-24%25-purple)
 
 ## Description ✏️
 Network Link is an API that is for social networking.  Users can successfully create and delete reactions to theiir thoughts. 
@@ -43,12 +47,6 @@ can handle a lot of unstructured data.
 ## Tests 🎯
 
 &nbsp; None
-
-## Badges 🏆
-
-![badmath](https://img.shields.io/badge/CSS-41%25-purple)
-![badmath](https://img.shields.io/badge/JavaScript-35%25-purple)
-![badmath](https://img.shields.io/badge/Handlebars-24%25-purple)
 
 ## Credits 👈
 
