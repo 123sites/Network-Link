@@ -3,8 +3,7 @@
 ![alt text](https://img.shields.io/badge/License-MIT-blue.svg)
 
 ## Description ✏️
-Network Link is an API that is for social networking.  
-Users can successfully create and delete reactions to theiir thoughts. 
+Network Link is an API that is for social networking.  Users can successfully create and delete reactions to theiir thoughts. 
 They can add and remove friends on their friend list.
 
 ## User Story 📖
@@ -34,7 +33,10 @@ can handle a lot of unstructured data.
 
 ## Video 🎯
 
-[Video](./assets/)
+[Video](https://youtu.be/LY_dguTWkbM)
+
+## Screenshot 🎯
+![Screenshot](./assets/Network-Link-Screenshot.png)
 
 ## Tests 🎯
 
@@ -59,6 +61,10 @@ The MIT license is in the GitHub repository. Click to link to view it:
 ## Features ✍
 
 Insomnia
+
+MongoDB
+
 Mongoose
+
 API routes
 
