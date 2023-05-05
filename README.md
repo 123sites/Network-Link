@@ -1,5 +1,6 @@
 # ⭐ Network Link ⭐
 
+
 ![alt text](https://img.shields.io/badge/License-MIT-blue.svg)
 
 ## Description ✏️
@@ -33,10 +34,11 @@ can handle a lot of unstructured data.
 
 ## Video 🎯
 
-YouTube video: https://youtu.be/LY_dguTWkbM 
+[Walkthrough YouTube Video](https://youtu.be/LY_dguTWkbM)
 
 ## Screenshot 🎯
-![alt text](./Assets/Network-Link-Screenshot.png)
+
+![Screenshot](./Assets/Network-Link-Screenshot.png)
 
 ## Tests 🎯
 
