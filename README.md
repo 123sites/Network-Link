@@ -30,7 +30,7 @@ can handle a lot of unstructured data.
 
 ## Usage &#128161;
 
-[Repository link:](https://github.com/123sites/Network-Link)
+[Repository link](https://github.com/123sites/Network-Link)
 
 ## Video 🎯
 
